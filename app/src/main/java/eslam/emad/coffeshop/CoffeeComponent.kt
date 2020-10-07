@@ -2,7 +2,7 @@ package eslam.emad.coffeshop
 
 import dagger.Component
 
-@Component
+@Component(modules = [CoffeeModule::class])
 interface CoffeeComponent {
 
     fun getCoffee(): Coffee

@@ -3,8 +3,8 @@ package eslam.emad.coffeshop
 import android.util.Log
 import javax.inject.Inject
 
-class River @Inject constructor() {
-
+class River {
+    //This class is just for view, cannot edit it
     private var TAG = "log_test"
 
     init {
