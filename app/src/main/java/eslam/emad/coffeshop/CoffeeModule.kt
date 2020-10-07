@@ -4,16 +4,10 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class CoffeeModule (var sugar: Int) {
-
+class CoffeeModule {
 
     @Provides
     fun provideRiver(): River{
         return River()
-    }
-
-    @Provides
-    fun provideSugar(): Int{
-        return sugar
     }
 }

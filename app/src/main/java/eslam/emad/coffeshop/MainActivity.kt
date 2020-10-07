@@ -8,14 +8,16 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     @Inject lateinit var coffee: Coffee
     private var TAG = "log_test"
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val component = DaggerCoffeeComponent.builder()
-            .coffeeModule(CoffeeModule(3)).build()
-        //var coffee = component.getCoffee()
+            .sugar(2)
+            .milk(1)
+            .build()
+        
         component.inject(this)
 
         Log.d(TAG, "onCreate: ${coffee.getCoffeeCup()}")
