@@ -2,16 +2,17 @@ package eslam.emad.coffeshop
 
 import dagger.BindsInstance
 import dagger.Component
+import dagger.Subcomponent
 
 @ActivityScope
-@Component(dependencies = [AppComponent::class])
+@Subcomponent
 interface CoffeeComponent {
 
     fun getCoffee(): Coffee
 
     fun inject(mainActivity: MainActivity)
 
-    @Component.Builder
+    @Subcomponent.Builder
     interface Builder{
 
         @BindsInstance
@@ -19,8 +20,6 @@ interface CoffeeComponent {
 
         @BindsInstance
         fun milk(@Milk milk: Int): Builder
-
-        fun appComponent(appComponent: AppComponent): Builder
 
         fun build(): CoffeeComponent
     }

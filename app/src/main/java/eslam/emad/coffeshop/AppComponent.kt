@@ -7,5 +7,5 @@ import javax.inject.Singleton
 @Component(modules = [RiverModule::class])
 interface AppComponent {
 
-    fun getRiver(): River
+    fun coffeeComponentBuilder(): CoffeeComponent.Builder
 }

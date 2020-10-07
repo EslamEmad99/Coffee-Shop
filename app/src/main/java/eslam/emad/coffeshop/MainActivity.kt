@@ -7,8 +7,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-    @Inject lateinit var coffee: Coffee
-    @Inject lateinit var coffee2: Coffee
+    @Inject
+    lateinit var coffee: Coffee
+
+    @Inject
+    lateinit var coffee2: Coffee
     private var TAG = "log_test"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,14 +20,13 @@ class MainActivity : AppCompatActivity() {
 
         val component = (application as MyApplication).component
 
-        val coffeeComponent = DaggerCoffeeComponent.builder()
-            .appComponent(component)
-            .sugar(5)
-            .milk(4)
+        val coffeeComponent = component.coffeeComponentBuilder()
+            .milk(5)
+            .sugar(3)
             .build()
 
         coffeeComponent.inject(this)
-
-        tv.text = "$coffee ${coffee.farm} + ${coffee.river} \n $coffee2 ${coffee2.farm} + ${coffee2.river}"
+        Log.d(TAG, "onCreate:\n $coffee ${coffee.farm} + ${coffee.river} \n $coffee2 ${coffee2.farm} + ${coffee2.river}"
+        )
     }
 }
