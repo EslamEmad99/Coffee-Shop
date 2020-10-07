@@ -2,7 +2,9 @@ package eslam.emad.coffeshop
 
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [CoffeeModule::class])
 interface CoffeeComponent {
 
