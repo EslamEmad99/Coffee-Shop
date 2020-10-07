@@ -7,4 +7,5 @@ interface CoffeeComponent {
 
     fun getCoffee(): Coffee
 
+    fun inject(mainActivity: MainActivity)
 }
