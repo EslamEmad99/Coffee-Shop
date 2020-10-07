@@ -20,10 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         val component = (application as MyApplication).component
 
-        val coffeeComponent = component.coffeeComponentBuilder()
-            .milk(5)
-            .sugar(3)
-            .build()
+        val coffeeComponent = component.coffeeComponentFactory()
+            .create(4, 2)
 
         coffeeComponent.inject(this)
         Log.d(TAG, "onCreate:\n $coffee ${coffee.farm} + ${coffee.river} \n $coffee2 ${coffee2.farm} + ${coffee2.river}"

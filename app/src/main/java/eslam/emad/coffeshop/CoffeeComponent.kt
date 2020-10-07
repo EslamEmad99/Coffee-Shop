@@ -12,15 +12,9 @@ interface CoffeeComponent {
 
     fun inject(mainActivity: MainActivity)
 
-    @Subcomponent.Builder
-    interface Builder{
+    @Subcomponent.Factory
+    interface Factory{
 
-        @BindsInstance
-        fun sugar(@Sugar sugar: Int): Builder
-
-        @BindsInstance
-        fun milk(@Milk milk: Int): Builder
-
-        fun build(): CoffeeComponent
+        fun create(@BindsInstance @Sugar sugar: Int, @BindsInstance @Milk milk: Int): CoffeeComponent
     }
 }
