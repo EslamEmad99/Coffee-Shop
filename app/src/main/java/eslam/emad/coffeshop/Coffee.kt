@@ -2,8 +2,8 @@ package eslam.emad.coffeshop
 
 import android.util.Log
 import javax.inject.Inject
-import javax.inject.Named
 
+@ActivityScope
 class Coffee @Inject constructor(var farm: Farm, @Sugar var sugar: Int, @Milk var milk: Int) {
 
     private var TAG = "log_test"

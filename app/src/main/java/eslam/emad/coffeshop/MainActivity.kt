@@ -3,11 +3,12 @@ package eslam.emad.coffeshop
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-    //@Inject lateinit var coffee: Coffee
-    //@Inject lateinit var coffee2: Coffee
+    @Inject lateinit var coffee: Coffee
+    @Inject lateinit var coffee2: Coffee
     private var TAG = "log_test"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,9 +17,14 @@ class MainActivity : AppCompatActivity() {
 
         val component = (application as MyApplication).component
 
-        val coffee = component.getCoffee()
-        val coffee2 = component.getCoffee()
+        val coffeeComponent = DaggerCoffeeComponent.builder()
+            .appComponent(component)
+            .sugar(5)
+            .milk(4)
+            .build()
 
-        Log.d(TAG, "onCreate: $coffee ${coffee.farm} + ${coffee.river} \n $coffee2 ${coffee2.farm} + ${coffee2.river}")
+        coffeeComponent.inject(this)
+
+        tv.text = "$coffee ${coffee.farm} + ${coffee.river} \n $coffee2 ${coffee2.farm} + ${coffee2.river}"
     }
 }

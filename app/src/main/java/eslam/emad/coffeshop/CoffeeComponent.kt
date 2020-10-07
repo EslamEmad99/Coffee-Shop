@@ -2,10 +2,9 @@ package eslam.emad.coffeshop
 
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [CoffeeModule::class])
+@ActivityScope
+@Component(dependencies = [AppComponent::class])
 interface CoffeeComponent {
 
     fun getCoffee(): Coffee
@@ -20,6 +19,8 @@ interface CoffeeComponent {
 
         @BindsInstance
         fun milk(@Milk milk: Int): Builder
+
+        fun appComponent(appComponent: AppComponent): Builder
 
         fun build(): CoffeeComponent
     }
